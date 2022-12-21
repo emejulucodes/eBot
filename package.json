@@ -14,7 +14,11 @@
         "dotenv": "8.0.0",
         "express": "^4.16.3",
         "openai": "^3.1.0",
-        "twilio": "^4.6.0"
+        "twilio": "^4.6.0",
+        "@babel/cli": "7.5.5",
+        "@babel/core": "7.5.5",
+        "@babel/node": "^7.5.5",
+        "@babel/preset-env": "^7.5.5"
     },
     "devDependencies": {
         "@babel/cli": "7.5.5",
