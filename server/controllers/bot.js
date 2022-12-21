@@ -8,24 +8,16 @@ const {
   TWILIO_TOKEN: TwilloAuthToken,
 } = process.env;
 
-const {
-  Configuration,
-  OpenAIApi
-} = require("openai");
+const { Configuration, OpenAIApi } = require("openai");
 
-twilio(
-  accountSid,
-  TwilloAuthToken
-  );
+twilio(accountSid, TwilloAuthToken);
 
 const configuration = new Configuration({
   apiKey: OpenAIkey,
 });
 const openai = new OpenAIApi(configuration);
 
-const {
-  MessagingResponse
-} = twilio.twiml;
+const { MessagingResponse } = twilio.twiml;
 /**
  * @class Bot
  * @description class will implement bot functionality
@@ -97,9 +89,13 @@ class Bot {
       res.writeHead(200, { "Content-Type": "text/xml" });
       res.end(twiml.toString());
     } else {
-      twiml.message(response.data.choices[0].text);
-      res.writeHead(200, { "Content-Type": "text/xml" });
-      res.end(twiml.toString());
+      try {
+        twiml.message(response.data.choices[0].text);
+        res.writeHead(200, { "Content-Type": "text/xml" });
+        res.end(twiml.toString());
+      } catch (error) {
+        console.log(error);
+      }
     }
   }
 }
