@@ -1,0 +1,28 @@
+{
+    "name": "ebot",
+    "version": "1.0.0",
+    "description": "emejulucodes whatsapp bot",
+    "main": "index.js",
+    "scripts": {
+        "start": "babel-node server/server.js",
+        "test": "echo \"Error: no test specified\" && exit 1"
+    },
+    "author": "Emmanuel Emejulu",
+    "license": "ISC",
+    "dependencies": {
+        "cors": "2.8.5",
+        "dotenv": "8.0.0",
+        "express": "^4.16.3",
+        "openai": "^3.1.0",
+        "twilio": "^4.6.0"
+    },
+    "devDependencies": {
+        "@babel/cli": "7.5.5",
+        "@babel/core": "7.5.5",
+        "@babel/node": "^7.5.5",
+        "@babel/preset-env": "^7.5.5"
+    },
+    "engines": {
+        "node": "8.x"
+    }
+}
