@@ -8,16 +8,24 @@ const {
   TWILIO_TOKEN: TwilloAuthToken,
 } = process.env;
 
-const { Configuration, OpenAIApi } = require("openai");
+const {
+  Configuration,
+  OpenAIApi
+} = require("openai");
 
-twilio(accountSid, TwilloAuthToken);
+twilio(
+  accountSid,
+  TwilloAuthToken
+  );
 
 const configuration = new Configuration({
   apiKey: OpenAIkey,
 });
 const openai = new OpenAIApi(configuration);
 
-const { MessagingResponse } = twilio.twiml;
+const {
+  MessagingResponse
+} = twilio.twiml;
 /**
  * @class Bot
  * @description class will implement bot functionality
@@ -44,59 +52,59 @@ class Bot {
       presence_penalty: 0,
     });
 
-    if (msg === "hi" || msg === "Hi") {
-      twiml.message(
-        "Hello! 👋 Welcome, i am eBot by Emmanuel Emejulu\nI am a bot that helps you make researches.\n\nIm beign trained with Open AI API.\n\nI hope you enjoy using me. 😊"
-      );
-      res.writeHead(200, { "Content-Type": "text/xml" });
-      res.end(twiml.toString());
-    }
-
-    if (msg === "hello" || msg === "Hello") {
-      twiml.message(
-        "Hi! 👋 Welcome, i am eBot by Emmanuel Emejulu\nI am a bot that helps you make researches.\n\nIm beign trained with Open AI API.\n\nI hope you enjoy using me. 😊"
-      );
-      res.writeHead(200, { "Content-Type": "text/xml" });
-      res.end(twiml.toString());
-    }
-
-    if (
-      msg === "Emmanuel Emejulu" ||
-      msg === "emmanuel emejulu" ||
-      msg === "Who is Emmanuel Emejulu" ||
-      msg === "who is emmanuel emejulu"
-    ) {
-      twiml.message(
-        `Emmanuel Emejulu Is a Web And Mobile App Developer From Nigeria with 5yrs of experience.\n\nHe's the one that built me 😎\nRead More about him at https://emejulucodes.dev`
-      );
-      res.writeHead(200, { "Content-Type": "text/xml" });
-      res.end(twiml.toString());
-    }
-
-    if (
-      msg === "thanks" ||
-      msg === "Thanks" ||
-      msg === "Thank you" ||
-      msg === "thank you"
-    ) {
-      twiml.message("You are welcome 😊");
-      res.writeHead(200, { "Content-Type": "text/xml" });
-      res.end(twiml.toString());
-    }
-
-    if (msg === "bye" || msg === "Bye") {
-      twiml.message("Goodbye! 👋");
-      res.writeHead(200, { "Content-Type": "text/xml" });
-      res.end(twiml.toString());
-    } else {
-      try {
-        twiml.message(response.data.choices[0].text);
-        res.writeHead(200, { "Content-Type": "text/xml" });
-        res.end(twiml.toString());
-      } catch (error) {
-        console.log(error);
-      }
-    }
+   try {
+	 if (msg === "hi" || msg === "Hi") {
+	      twiml.message(
+	        "Hello! 👋 Welcome, i am eBot by Emmanuel Emejulu\nI am a bot that helps you make researches.\n\nIm beign trained with Open AI API.\n\nI hope you enjoy using me. 😊"
+	      );
+	      res.writeHead(200, { "Content-Type": "text/xml" });
+	      res.end(twiml.toString());
+	    }
+	
+	    if (msg === "hello" || msg === "Hello") {
+	      twiml.message(
+	        "Hi! 👋 Welcome, i am eBot by Emmanuel Emejulu\nI am a bot that helps you make researches.\n\nIm beign trained with Open AI API.\n\nI hope you enjoy using me. 😊"
+	      );
+	      res.writeHead(200, { "Content-Type": "text/xml" });
+	      res.end(twiml.toString());
+	    }
+	
+	    if (
+	      msg === "Emmanuel Emejulu" ||
+	      msg === "emmanuel emejulu" ||
+	      msg === "Who is Emmanuel Emejulu" ||
+	      msg === "who is emmanuel emejulu"
+	    ) {
+	      twiml.message(
+	        `Emmanuel Emejulu Is a Web And Mobile App Developer From Nigeria with 5yrs of experience.\n\nHe's the one that built me 😎\nRead More about him at https://emejulucodes.dev`
+	      );
+	      res.writeHead(200, { "Content-Type": "text/xml" });
+	      res.end(twiml.toString());
+	    }
+	
+	    if (
+	      msg === "thanks" ||
+	      msg === "Thanks" ||
+	      msg === "Thank you" ||
+	      msg === "thank you"
+	    ) {
+	      twiml.message("You are welcome 😊");
+	      res.writeHead(200, { "Content-Type": "text/xml" });
+	      res.end(twiml.toString());
+	    }
+	
+	    if (msg === "bye" || msg === "Bye") {
+	      twiml.message("Goodbye! 👋");
+	      res.writeHead(200, { "Content-Type": "text/xml" });
+	      res.end(twiml.toString());
+	    } else {
+	      twiml.message(response.data.choices[0].text);
+	      res.writeHead(200, { "Content-Type": "text/xml" });
+	      res.end(twiml.toString());
+	    }
+} catch (error) {
+	next(error)
+}
   }
 }
 
