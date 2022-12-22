@@ -1,6 +1,6 @@
 import express from "express";
 import cors from "cors";
-import v1Routes from "./routes";
+import botRouter from "./routes";
 
 const app = express();
 
@@ -15,7 +15,7 @@ app.use(
 );
 
 app.use(express.json());
-app.use(v1Routes);
+app.use(botRouter);
 
 // catch 404 and forward to error handler
 app.use((req, res, next) => {
